@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/kzsnkgw/starter-kit/issues"
   },
-  "homepage": "https://github.com/kzsnkgw/starter-kit#readme"
+  "homepage": "https://github.com/kzsnkgw/starter-kit#readme",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-csscomb": "^3.0.6",
+    "gulp-imagemin": "^2.4.0",
+    "gulp-sass": "^2.2.0",
+    "webpack": "^1.12.13"
+  }
 }
