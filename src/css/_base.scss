@@ -1,0 +1,28 @@
+html {
+  overflow-y: scroll;
+  font-size: $size-font-root;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $size-font-base;
+  background: #4C4B4B;
+  color: $color-font;
+  line-height: $line-height-base;
+  min-width: $width-inner;
+  text-size-adjust: 100%;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a {
+    color: #458ac4;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
