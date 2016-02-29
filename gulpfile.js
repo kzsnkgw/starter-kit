@@ -5,6 +5,7 @@ var imagemin = require('gulp-imagemin');
 var sass = require('gulp-sass');
 var cache = require('gulp-cached');
 var plumber = require('gulp-plumber');
+var jade = require('gulp-jade');
 var browserSync = require('browser-sync').create();
 
 var paths = {
@@ -27,6 +28,15 @@ gulp.task('sass', function(){
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(gulp.dest(paths.dist))
     .pipe(browserSync.stream());
+});
+
+gulp.task('jade', function(){
+  return gulp.src(paths.src + '**/*.jade')
+    .pipe(plumber())
+    .pipe(jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('browser-sync', function(){
