@@ -7,11 +7,27 @@ var cache = require('gulp-cached');
 var plumber = require('gulp-plumber');
 var jade = require('gulp-jade');
 var browserSync = require('browser-sync').create();
+var ts = require('gulp-typescript');
+var tsConfig = require('./src/tsconfig.json');
+var webpack = require('gulp-webpack');
+var webpackConfig = require('./webpack.config.js');
 
 var paths = {
   src: 'src/',
   dist: 'dist/'
 }
+
+gulp.task('ts', function () {
+    // TypeScriptのコンパイル
+    var tsResult = gulp.src([paths.src + '**/*.ts', '!./src/typings'])
+        // tscpnfig.jsonに書いたコンパイルオプションの取得
+        .pipe(ts(tsConfig.compilerOptions))
+        // webpack.config.jsに書いたwebpackの設定取得
+        .pipe(webpack(webpackConfig));
+
+    // JSファイルをdistに移動
+    return tsResult.pipe(gulp.dest(paths.dist));
+});
 
 gulp.task('imagemin', function(){
   return gulp.src(paths.src + '**/*.{gif,jpg,png,svg}')
@@ -59,9 +75,8 @@ gulp.task('serve', ['sass'], function(){
 });
 
 gulp.task('watch', function(){
-  return gulp.watch(paths.src, function(event){
-    gulp.run('sass');
-  });
+  gulp.watch( paths.src, function(event){ gulp.run('sass'); });
+  gulp.watch('./src/**/*.ts', ['ts']);
 });
 
-gulp.task('default', ['watch', 'serve', 'sass']);
+gulp.task('default', ['watch', 'serve', 'sass', 'ts']);
