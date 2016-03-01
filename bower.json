@@ -1,0 +1,21 @@
+{
+  "name": "starter-kit",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "kzsnkgw <kazushi.nakagaw@jp.oro.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kzsnkgw/starter-kit",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  }
+}
